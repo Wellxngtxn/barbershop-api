@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:16.11
+    container_name: barbershop-postgres
+
+    environment:
+      POSTGRES_DB: barbershop_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    ports:
+      - "5433:5432"
