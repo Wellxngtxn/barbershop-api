@@ -1,5 +1,6 @@
 package com.wellington.barbershopapi.model;
 
+import com.wellington.barbershopapi.enums.UserRoles.AuthProvider;
 import com.wellington.barbershopapi.enums.UserRoles.Role;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -34,8 +35,9 @@ public class User {
     @Column(name = "role", nullable = false, length = 50)
     private Role role;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "provider", nullable = false, length = 20)
-    private String provider;
+    private AuthProvider provider;
 
     @Column(name = "providerId", length = 100)
     private String providerId;
