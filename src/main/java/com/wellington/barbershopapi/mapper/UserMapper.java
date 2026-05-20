@@ -2,7 +2,7 @@ package com.wellington.barbershopapi.mapper;
 
 import com.wellington.barbershopapi.dto.request.UserCreateRequest;
 import com.wellington.barbershopapi.dto.response.UserResponse;
-import com.wellington.barbershopapi.model.User;
+import com.wellington.barbershopapi.entity.User;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

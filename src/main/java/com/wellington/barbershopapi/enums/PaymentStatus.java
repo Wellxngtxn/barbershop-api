@@ -1,4 +1,4 @@
-package com.wellington.barbershopapi.enums.UserRoles;
+package com.wellington.barbershopapi.enums;
 
 public enum PaymentStatus {
     PENDING,

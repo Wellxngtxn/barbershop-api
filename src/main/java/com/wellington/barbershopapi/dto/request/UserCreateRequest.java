@@ -6,14 +6,15 @@ import jakarta.validation.constraints.Size;
 
 public record UserCreateRequest(
         @NotBlank(message = "campo obrigatório")
-        @Size(min = 2, max = 100, message = "campo fora do tamanho padrão") String name,
+        @Size(min = 2, max = 100, message = "campo fora do tamanho padrão")
+        String name,
 
         @NotBlank(message = "campo obrigatório")
-        @Size(min = 5, max = 150, message = "campo fora do tamanho padrão")
+        @Size(min = 8, max = 150, message = "campo fora do tamanho padrão")
         @Email(message = "email inválido")
         String email,
 
         @NotBlank(message = "campo obrigatório")
-        @Size(min = 6, max = 150, message = "campo fora do tamanho padrão")
+        @Size(min = 8, max = 150, message = "campo fora do tamanho padrão")
         String password) {
 }

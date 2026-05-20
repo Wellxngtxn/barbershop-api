@@ -17,11 +17,17 @@ public class UserController {
     private final UserMapper mapper;
     private final UserService service;
 
-    @PostMapping("/users")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserResponse createUser(@RequestBody @Valid UserCreateRequest userRequest){
        // Lógica para criar um novo usuário
        return service.create(userRequest);
     }
 
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteUser(@RequestParam String email){
+        // Lógica para deletar um usuário por email
+        service.deleteByEmail(email);
+    }
 }

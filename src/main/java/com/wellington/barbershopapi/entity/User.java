@@ -1,7 +1,7 @@
-package com.wellington.barbershopapi.model;
+package com.wellington.barbershopapi.entity;
 
-import com.wellington.barbershopapi.enums.UserRoles.AuthProvider;
-import com.wellington.barbershopapi.enums.UserRoles.Role;
+import com.wellington.barbershopapi.enums.AuthProvider;
+import com.wellington.barbershopapi.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -42,14 +42,14 @@ public class User {
     @Column(name = "providerId", length = 100)
     private String providerId;
 
-    @Column(name = "active")
+    @Column(name = "active", nullable = false)
     private boolean active = true;
 
     @CreatedDate
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 }
