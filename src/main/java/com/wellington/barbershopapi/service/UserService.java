@@ -10,10 +10,13 @@ import com.wellington.barbershopapi.mapper.UserMapper;
 import com.wellington.barbershopapi.entity.User;
 import com.wellington.barbershopapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -38,19 +41,23 @@ public class UserService {
         return mapper.toDTO(savedUser);
     }
 
-    public UserResponse obterPorEmail(String email){
-        User user = repository.findByEmail(email)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Usuário não encontrado!"));
-        return mapper.toDTO(user);
-    }
-
-    public void deleteByEmail(String email){
-        Optional<User> user = repository.findByEmail(email);
+    public void deleteById(UUID id){
+        Optional<User> user = repository.findById(id);
         if(user.isEmpty()){
             throw new ResourceNotFoundException("Usuário não encontrado!");
         }
         repository.delete(user.get());
+    }
+
+    public Page<UserResponse> obterTodosUsuarios(int page, int size){
+        return repository.findAll(PageRequest.of(page, size)).map(mapper::toDTO);
+    }
+
+    public UserResponse obterPorId(UUID id){
+        User user = repository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Usuário não encontrado!"));
+        return mapper.toDTO(user);
     }
 
 }

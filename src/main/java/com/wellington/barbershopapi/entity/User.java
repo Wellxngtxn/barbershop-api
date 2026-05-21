@@ -39,7 +39,7 @@ public class User {
     @Column(name = "provider", nullable = false, length = 20)
     private AuthProvider provider;
 
-    @Column(name = "providerId", length = 100)
+    @Column(name = "providerid", length = 100)
     private String providerId;
 
     @Column(name = "active", nullable = false)
